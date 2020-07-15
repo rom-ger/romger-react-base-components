@@ -7,7 +7,7 @@ import * as queryString from 'query-string';
 import { confirmAlert } from 'react-confirm-alert';
 import { forOwn, get, set } from 'lodash';
 
-class RomgerReactBaseComponent extends React.Component {
+class RgReactBaseComponent extends React.Component {
     constructor(props) {
         super(props);
         this.emailReg = /^[-._a-zA-Z0-9]+@(?:[a-z0-9][-a-z0-9]+\.)+[a-z]{2,6}$/;
@@ -445,4 +445,4 @@ class RomgerReactBaseComponent extends React.Component {
     }
 }
 
-export default RomgerReactBaseComponent;
+export default RgReactBaseComponent;

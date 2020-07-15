@@ -4,7 +4,7 @@ import * as React from 'react';
 import { toast } from 'react-toastify';
 // import { sha256 } from './crypto';
 
-class RomgerReactBaseService {
+class RgReactBaseService {
     static POST_METHOD = 'post';
     static GET_METHOD = 'get';
     static DEFAULT_ERROR_MESSAGE = {
@@ -22,18 +22,18 @@ class RomgerReactBaseService {
             promise
                 .then(res => {
                     if (!!res && res.data.error) {
-                        RomgerReactBaseService.showToast(toast.error(res.data.error));
+                        RgReactBaseService.showToast(toast.error(res.data.error));
                         reject(res);
                         return;
                     }
                     if (!!res && res.data.message) {
-                        RomgerReactBaseService.showToast(toast.success(res.data.message));
+                        RgReactBaseService.showToast(toast.success(res.data.message));
                     }
                     resolve(!!res ? res.data : null);
                 })
                 .catch(error => {
                     if (!withoutToast) {
-                        RomgerReactBaseService.showToast(toast.error(RomgerReactBaseService.DEFAULT_ERROR_MESSAGE[error.toString()] ? RomgerReactBaseService.DEFAULT_ERROR_MESSAGE[error.toString()] : RomgerReactBaseService.parseErrorText(error.response)));
+                        RgReactBaseService.showToast(toast.error(RgReactBaseService.DEFAULT_ERROR_MESSAGE[error.toString()] ? RgReactBaseService.DEFAULT_ERROR_MESSAGE[error.toString()] : RgReactBaseService.parseErrorText(error.response)));
                     }
                     reject(error);
                 });
@@ -48,14 +48,14 @@ class RomgerReactBaseService {
         else {
             error = !!errorResponse && errorResponse.data ? errorResponse.data.message ? errorResponse.data.message : errorResponse.data : 'Неизвестная ошибка';
         }
-        return RomgerReactBaseService.DEFAULT_ERROR_MESSAGE[error] ? RomgerReactBaseService.DEFAULT_ERROR_MESSAGE[error] : error;
+        return RgReactBaseService.DEFAULT_ERROR_MESSAGE[error] ? RgReactBaseService.DEFAULT_ERROR_MESSAGE[error] : error;
     }
 
     static showToast(toastId) {
         if (typeof window === 'undefined') {
             return;
         }
-        window.setTimeout(() => toast.dismiss(toastId), RomgerReactBaseService.DEFAULT_TIMEOUT);
+        window.setTimeout(() => toast.dismiss(toastId), RgReactBaseService.DEFAULT_TIMEOUT);
     }
 
     /**
@@ -64,8 +64,8 @@ class RomgerReactBaseService {
      * @param {*} params 
      * @param {*} config 
      */
-    static parseParamsAndConfig(method = RomgerReactBaseService.GET_METHOD, params = {}, config = {}) {
-        let _params = method === RomgerReactBaseService.GET_METHOD ? { params: params } : params;
+    static parseParamsAndConfig(method = RgReactBaseService.GET_METHOD, params = {}, config = {}) {
+        let _params = method === RgReactBaseService.GET_METHOD ? { params: params } : params;
         let _config = config;
         return {
             params: _params,
@@ -84,11 +84,11 @@ class RomgerReactBaseService {
         let fraction = (sourceValue + '').split('.')[1];
         let result = '';
         while (sourceValue >= Math.pow(dex, length)) {
-            let part = RomgerReactBaseService._addZero(Math.floor(sourceValue % Math.pow(dex, length)), length);
-            result = RomgerReactBaseService._addPartNumber(part, separator, result);
+            let part = RgReactBaseService._addZero(Math.floor(sourceValue % Math.pow(dex, length)), length);
+            result = RgReactBaseService._addPartNumber(part, separator, result);
             sourceValue = Math.floor(sourceValue / Math.pow(dex, length));
         }
-        result = RomgerReactBaseService._addPartNumber(sourceValue, separator, result);
+        result = RgReactBaseService._addPartNumber(sourceValue, separator, result);
         if (!!fraction) {
             result = `${result}.${fraction}`;
         }
@@ -192,9 +192,9 @@ class RomgerReactBaseService {
     /**
      * Вызвать колбэк с таймаутом
      */
-    static callCallbackWithTimeout = (field, callback, timeout = RomgerReactBaseService.DEFAULT_TIMEOUT_UPDATE) => {
-            RomgerReactBaseService.timeoutCollections[field] = (new Date().getTime() * 10) / 10;
-            return RomgerReactBaseService.clearTimeoutPause(field, callback, timeout);
+    static callCallbackWithTimeout = (field, callback, timeout = RgReactBaseService.DEFAULT_TIMEOUT_UPDATE) => {
+            RgReactBaseService.timeoutCollections[field] = (new Date().getTime() * 10) / 10;
+            return RgReactBaseService.clearTimeoutPause(field, callback, timeout);
     }
 
     /**
@@ -208,7 +208,7 @@ class RomgerReactBaseService {
             return;
         }
         window.setTimeout(() => {
-            if (RomgerReactBaseService.timeoutCollections[field] + timeout <= (new Date().getTime() * 10) / 10) {
+            if (RgReactBaseService.timeoutCollections[field] + timeout <= (new Date().getTime() * 10) / 10) {
                 return callback();
             }
         }, timeout);
@@ -216,7 +216,7 @@ class RomgerReactBaseService {
 
     static useCallWithTimeout(field, entity, callback) {
         React.useEffect(
-            () => RomgerReactBaseService.callCallbackWithTimeout(field, callback),
+            () => RgReactBaseService.callCallbackWithTimeout(field, callback),
             [entity],
         );
     }
@@ -234,4 +234,4 @@ class RomgerReactBaseService {
     // };
 }
 
-export default RomgerReactBaseService;
+export default RgReactBaseService;

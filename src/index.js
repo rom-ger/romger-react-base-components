@@ -1,5 +1,5 @@
-import RomgerReactBaseComponent from './baseComponent';
-import RomgerReactBaseContainer from './baseContainer';
-import RomgerReactBaseService from './baseService';
+import RgReactBaseComponent from './baseComponent';
+import RgReactBaseContainer from './baseContainer';
+import RgReactBaseService from './baseService';
 
-export { RomgerReactBaseComponent, RomgerReactBaseContainer, RomgerReactBaseService };
+export { RgReactBaseComponent, RgReactBaseContainer, RgReactBaseService };

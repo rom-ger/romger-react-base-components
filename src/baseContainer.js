@@ -1,7 +1,7 @@
 import React from 'react';
-import RomgerReactBaseComponent from './baseComponent';
+import RgReactBaseComponent from './baseComponent';
 
-class RomgerReactBaseContainer extends RomgerReactBaseComponent {
+class RgReactBaseContainer extends RgReactBaseComponent {
     constructor(props) {
         super(props);
         this.checkResize();
@@ -37,4 +37,4 @@ class RomgerReactBaseContainer extends RomgerReactBaseComponent {
     }
 }
 
-export default RomgerReactBaseContainer;
+export default RgReactBaseContainer;

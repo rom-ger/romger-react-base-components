@@ -14,7 +14,7 @@ declare class GlobalStore {
     goToState(stateName: string, params?: any, url?: string | null): any;
 }
 
-interface RomgerReactBaseServiceInterface {
+interface RgReactBaseServiceInterface {
     POST_METHOD: string;
     GET_METHOD: string;
     DEFAULT_ERROR_MESSAGE: object;
@@ -50,9 +50,9 @@ interface RomgerReactBaseServiceInterface {
     usePrevious<T>(value: T): T;
 }
 
-declare const RomgerReactBaseService: RomgerReactBaseServiceInterface;
+declare const RgReactBaseService: RgReactBaseServiceInterface;
 
-interface RomgerReactBaseComponentInterface {
+interface RgReactBaseComponentInterface {
     loading: boolean;
 
     getSetStateField<T>(field: string, validCallback?: (value: T) => boolean, changeCallback?: () => any): ((value?: T) => T);
@@ -124,7 +124,7 @@ interface RomgerReactBaseComponentInterface {
     render(): false | JSX.Element | JSX.Element[];
 }
 
-declare class RomgerReactBaseComponent<P, S> extends React.Component<P, S> implements RomgerReactBaseComponentInterface {
+declare class RgReactBaseComponent<P, S> extends React.Component<P, S> implements RgReactBaseComponentInterface {
     emailReg: string;
     stringReg: string;
     phoneMask: string;
@@ -206,10 +206,10 @@ declare class RomgerReactBaseComponent<P, S> extends React.Component<P, S> imple
 
     render(): false | JSX.Element | JSX.Element[];
 }
-declare class RomgerReactBaseContainer<P, S> extends RomgerReactBaseComponent<P, S> {
+declare class RgReactBaseContainer<P, S> extends RgReactBaseComponent<P, S> {
     componentDidMount(): any;
 
     render(): false | JSX.Element | JSX.Element[];
 }
 
-export { RomgerReactBaseComponent, RomgerReactBaseComponentInterface, RomgerReactBaseContainer, RomgerReactBaseService };
+export { RgReactBaseComponent, RgReactBaseComponentInterface, RgReactBaseContainer, RgReactBaseService };

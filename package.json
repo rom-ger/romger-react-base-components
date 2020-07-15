@@ -1,12 +1,12 @@
 {
   "name": "@romger/react-base-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "@romger/react-base-components",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rom-ger/romger-react-base-components"
   },
-  "author": "r.gerasimovich",
+  "author": "Romger",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "license": "MIT",
